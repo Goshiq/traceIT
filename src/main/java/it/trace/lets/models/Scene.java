@@ -27,7 +27,7 @@ public class Scene {
         this.id = id;
     }
 
-    @Id
+//    @Id
     public Long getId() {
         return id;
     }
