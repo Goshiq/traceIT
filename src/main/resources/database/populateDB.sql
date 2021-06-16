@@ -1,0 +1,3 @@
+INSERT INTO scenes VALUES
+(1, now())
+ON CONFLICT (id) DO NOTHING ;
