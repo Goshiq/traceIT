@@ -19,4 +19,8 @@ public class SceneService {
     public List<Scene> getAllScenes() {
         return sceneRepository.findAll();
     }
+
+    public Scene    addScene(Scene scene) {
+        return sceneRepository.save(scene);
+    }
 }

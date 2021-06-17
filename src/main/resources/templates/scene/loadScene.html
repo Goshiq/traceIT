@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>List of the scenes</title>
@@ -33,7 +33,7 @@
 
       .button_home {
         position: absolute;
-        width: 125px;
+        width: 250px;
         height: 46px;
         left: 22px;
         top: 23px;
@@ -53,8 +53,15 @@
     </style>
   </head>
   <body>
-  <div class="text">Выберите сцену:</div>
   <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">traceIT!</button></a>
-
+  <div class="text">Выберите сцену:
+      <div style="font-size: 18px">
+          <div th:each="scene: ${allScenes}">
+              <a style="text-decoration: none; color: darkslategrey"
+                 th:href="@{scene/{id}(id=${scene.id})}"
+                 th:text="${scene.id} + ': ' + ${#dates.format(scene.date, 'dd-MM-yyyy   HH:mm')}"/>
+          </div>
+      </div>
+  </div>
   </body>
 </html>
