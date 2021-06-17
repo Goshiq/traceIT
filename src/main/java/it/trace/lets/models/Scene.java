@@ -18,17 +18,17 @@ import java.util.Date;
 @AllArgsConstructor
 public class Scene {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Date date;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-//    @Id
-    public Long getId() {
-        return id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+////    @Id
+//    public Long getId() {
+//        return id;
+//    }
 }
