@@ -1,4 +1,4 @@
-package it.trace.lets.controllers;
+package it.trace.lets.services;
 
 import it.trace.lets.models.Scene;
 import it.trace.lets.repository.SceneRepository;
@@ -10,8 +10,11 @@ import java.util.List;
 @Service
 public class SceneService {
 
-    @Autowired
-    private SceneRepository sceneRepository;
+    private final SceneRepository sceneRepository;
+
+    public SceneService(SceneRepository sceneRepository) {
+        this.sceneRepository = sceneRepository;
+    }
 
     public List<Scene> getAllScenes() {
         return sceneRepository.findAll();
