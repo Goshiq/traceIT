@@ -53,15 +53,15 @@
     </style>
   </head>
   <body>
-  <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">traceIT!</button></a>
+  <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">Home</button></a>
   <div class="text">Выберите сцену:
       <div style="font-size: 18px">
           <div th:each="scene: ${allScenes}">
-              <form th:method="DELETE" th:action="@{/scene/delete/{id}(id=${scene.getId()})}">
+              <form th:method="POST" th:action="@{/scene/delete/{id}(id=${scene.getId()})}">
                   <a style="text-decoration: none; color: darkslategrey"
                      th:href="@{{id}(id=${scene.id})}"
                      th:text="${scene.id} + ': ' + ${#dates.format(scene.date, 'dd-MM-yyyy   HH:mm')}"/>
-                  <input type="submit" value="Delete"/>
+                  <input type="submit" value="Удалить"/>
               </form>
           </div>
       </div>

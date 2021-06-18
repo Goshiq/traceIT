@@ -1,17 +1,13 @@
 package it.trace.lets.controllers;
 
-import it.trace.lets.models.Figure;
 import it.trace.lets.models.Scene;
-import it.trace.lets.repository.SceneRepository;
 import it.trace.lets.services.SceneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequestMapping("/scene")
@@ -22,6 +18,11 @@ public class SceneController {
 
     @GetMapping("/newscene")
     public String   addScene(Model model) {
+        Scene   scene = new Scene();
+        scene.setDate(new Date());
+        sceneService.addScene(scene);
+        model.addAttribute("newScene", scene);
+        model.addAttribute("figures", scene.getFigures());
         return "scene/newScene";
     }
 
@@ -38,8 +39,14 @@ public class SceneController {
     }
 
     @PostMapping("/delete/{id}")
-    public String deleteScene(@PathVariable("id") Long id) {
+    public String   deleteScene(@PathVariable("id") Long id) {
         sceneService.deleteScene(id);
+        return "redirect:/scene/loadscene";
+    }
+
+    @PostMapping("/create")
+    public String   creteScene(@ModelAttribute("scene") Scene scene) {
+        sceneService.addScene(scene);
         return "redirect:/scene/loadscene";
     }
 }

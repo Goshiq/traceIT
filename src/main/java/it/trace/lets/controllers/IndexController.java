@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class IndexController {
 
     @GetMapping
-    public String   index() {
+    public String   index(Model model) {
         return "index";
     }
 }
