@@ -2,13 +2,13 @@ package it.trace.lets.controllers;
 
 import it.trace.lets.models.Figure;
 import it.trace.lets.models.Scene;
+import it.trace.lets.repository.SceneRepository;
 import it.trace.lets.services.SceneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 import java.util.List;
@@ -22,13 +22,24 @@ public class SceneController {
 
     @GetMapping("/newscene")
     public String   addScene(Model model) {
-        return "/scene/newScene";
+        return "scene/newScene";
     }
 
     @GetMapping("/loadscene")
     public String   loadScene(Model model) {
-        sceneService.addScene(new Scene(99L, new Date(), null));
         model.addAttribute("allScenes", sceneService.getAllScenes());
-        return "/scene/loadScene";
+        return "scene/loadScene";
+    }
+
+    @GetMapping("/{id}")
+    public String   showScene(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("scene", sceneService.getScene(id));
+        return "scene/showScene";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteScene(@PathVariable("id") Long id) {
+        sceneService.deleteScene(id);
+        return "redirect:/scene/loadscene";
     }
 }

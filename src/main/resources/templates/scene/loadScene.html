@@ -35,8 +35,8 @@
         position: absolute;
         width: 125px;
         height: 46px;
-        left: 22px;
-        top: 23px;
+        left: 25px;
+        top: 25px;
         font-size: 25px;
         border-radius: 10px;
 
@@ -57,9 +57,12 @@
   <div class="text">Выберите сцену:
       <div style="font-size: 18px">
           <div th:each="scene: ${allScenes}">
-              <a style="text-decoration: none; color: darkslategrey"
-                 th:href="@{scene/{id}(id=${scene.id})}"
-                 th:text="${scene.id} + ': ' + ${#dates.format(scene.date, 'dd-MM-yyyy   HH:mm')}"/>
+              <form th:method="DELETE" th:action="@{/scene/delete/{id}(id=${scene.getId()})}">
+                  <a style="text-decoration: none; color: darkslategrey"
+                     th:href="@{{id}(id=${scene.id})}"
+                     th:text="${scene.id} + ': ' + ${#dates.format(scene.date, 'dd-MM-yyyy   HH:mm')}"/>
+                  <input type="submit" value="Delete"/>
+              </form>
           </div>
       </div>
   </div>

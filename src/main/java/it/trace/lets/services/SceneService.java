@@ -23,4 +23,12 @@ public class SceneService {
     public Scene    addScene(Scene scene) {
         return sceneRepository.save(scene);
     }
+
+    public Scene    getScene(Long id) {
+        return sceneRepository.getById(id);
+    }
+
+    public void     deleteScene(Long id) {
+        sceneRepository.deleteById(id);
+    }
 }
