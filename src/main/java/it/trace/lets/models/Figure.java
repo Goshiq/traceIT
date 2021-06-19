@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Figure {
 
@@ -16,8 +15,22 @@ public class Figure {
 
     private FigureType  type;
 
-    private int     color;
+    private Integer color;
+
+    private String  center;
+
+    private String  direction;
+
+    private Double  radius;
 
     @ManyToOne
     private Scene   scene;
+
+    public Figure() {
+        this.type = FigureType.SPHERE;
+        this.color = 0;
+        this.center = "0,0,0";
+        this.direction = "0,0,0";
+        this.radius = 0D;
+    }
 }

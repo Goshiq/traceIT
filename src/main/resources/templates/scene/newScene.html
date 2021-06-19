@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+    <meta charset="UTF-8">
     <title>Create a new scene</title>
     <style>
         .text {
             position: static;
-            width: 500px;
+            width: 1000px;
             height: 47px;
             left: 22px;
             top: 94px;
@@ -51,7 +51,7 @@
               left: 25px;
               top: 145px;
 
-              background: #959595;
+              background: #454545;
               box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
               border-radius: 25px;
           }
@@ -62,13 +62,24 @@
               height: 45px;
               left: 225px;
               top: 145px;
-              background: #eceaea;
+              background: #7f7f7f;
               box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
               border-radius: 25px;
           }
 
+        .button_camera {
+            position: static;
+            width: 150px;
+            height: 45px;
+            left: 225px;
+            top: 145px;
+            background: #eceaea;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 25px;
+        }
+
           .button:active {
-            background-color: #3e8e41;
+            background-color: rgba(99, 99, 99, 0.28);
             box-shadow: 0 5px #666;
             transform: translateY(4px);
           }
@@ -76,15 +87,21 @@
     </style>
 </head>
 <body>
-<a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">Home</button></a>
-<div class="text" style="font-size: 16px">
+<div>
+    <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">Home</button></a>
+</div>
+<br>
+<div class="text" style="font-size: 24px">
     <label>Выберите объект для добавления в сцену:</label>
 </div>
 <div>
-    <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_figure">Фигура</button></a>
+    <a th:href="@{'newscene/' + ${newSceneId} + '/addfigure'}" style="text-decoration: none; color: whitesmoke"><button class="button button_figure" style="font-family: Copperplate,serif">Фигура</button></a>
 </div>
 <div>
-    <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_light" style="font-size: 16px; color: #666666">Источник света</button></a>
+    <a th:href="@{'newscene/' + ${newSceneId} + '/addlight'}" style="text-decoration: none; color: whitesmoke"><button class="button button_light" style="color: #e2e2e2; font-family: Copperplate,serif">Свет</button></a>
+</div>
+<div>
+    <a th:href="@{'newscene/' + ${newSceneId} + '/addcamera'}" style="text-decoration: none; color: whitesmoke"><button class="button button_camera" style="color: #666666; font-family: Copperplate,serif">Камера</button></a>
 </div>
 <br>
 <div class="text" style="font-size: 16px; top: 140px">

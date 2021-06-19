@@ -1,25 +1,33 @@
 package it.trace.lets.controllers;
 
+import it.trace.lets.models.Camera;
+import it.trace.lets.models.Figure;
 import it.trace.lets.models.Scene;
+import it.trace.lets.services.FigureService;
 import it.trace.lets.services.SceneService;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/scene")
 public class SceneController {
 
-    @Autowired
-    private SceneService sceneService;
+    private final SceneService sceneService;
+
+    private final FigureService figureService;
 
     @GetMapping("/newscene")
     public String   addScene(Model model) {
         Scene   scene = new Scene();
-        scene.setDate(new Date());
         sceneService.addScene(scene);
         model.addAttribute("newScene", scene);
         model.addAttribute("newSceneId", scene.getId());
@@ -50,8 +58,12 @@ public class SceneController {
         return "redirect:/scene/loadscene";
     }
 
-    @PostMapping("/newscene/{id}/addfigure")
-    public String   addFigure(@PathVariable("newSceneId") Long sceneId) {
-
+    @GetMapping("/newscene/{id}/addfigure")
+    public String   addFigure(@PathVariable("id") Long sceneId, Model model) {
+        Figure figure = new Figure();
+        figure.setScene(sceneService.getScene(sceneId));
+        figureService.addFigure(figure);
+        model.addAttribute("newFigureId", figure.getId());
+        return "figure/newFigure";
     }
 }

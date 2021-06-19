@@ -1,28 +1,29 @@
 package it.trace.lets.services;
 
+import it.trace.lets.models.Camera;
 import it.trace.lets.models.Figure;
 import it.trace.lets.models.Scene;
+import it.trace.lets.repository.FigureRepository;
 import it.trace.lets.repository.SceneRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class SceneService {
 
     private final SceneRepository sceneRepository;
 
-    public SceneService(SceneRepository sceneRepository) {
-        this.sceneRepository = sceneRepository;
-    }
+    private final FigureRepository figureRepository;
 
     public List<Scene> getAllScenes() {
         return sceneRepository.findAll();
     }
 
-    public Scene    addScene(Scene scene) {
-        return sceneRepository.save(scene);
+    public void     addScene(Scene scene) {
+        sceneRepository.save(scene);
     }
 
     public Scene    getScene(Long id) {
@@ -36,5 +37,10 @@ public class SceneService {
     public List<Figure> getFigures(Long id) {
         Scene   scene = sceneRepository.getById(id);
         return scene.getFigures();
+    }
+
+    public List<Camera> getCameras(Long id) {
+        Scene   scene = sceneRepository.getById(id);
+        return scene.getCameras();
     }
 }

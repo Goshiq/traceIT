@@ -15,4 +15,8 @@ public class FigureService {
     public Figure   findById(Long id) {
         return figureRepository.getById(id);
     }
+
+    public void     addFigure(Figure figure) {
+        figureRepository.save(figure);
+    }
 }
