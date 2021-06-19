@@ -1,8 +1,6 @@
 package it.trace.lets.models;
 
 import lombok.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Scope;
 
 import javax.persistence.*;
 
@@ -17,6 +15,8 @@ public class Figure {
     private Long    id;
 
     private FigureType  type;
+
+    private int     color;
 
     @ManyToOne
     private Scene   scene;

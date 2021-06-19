@@ -22,7 +22,7 @@ public class SceneController {
         scene.setDate(new Date());
         sceneService.addScene(scene);
         model.addAttribute("newScene", scene);
-        model.addAttribute("figures", scene.getFigures());
+        model.addAttribute("newSceneId", scene.getId());
         return "scene/newScene";
     }
 
@@ -45,8 +45,13 @@ public class SceneController {
     }
 
     @PostMapping("/create")
-    public String   creteScene(@ModelAttribute("scene") Scene scene) {
+    public String   creteScene(@RequestBody Scene scene) {
         sceneService.addScene(scene);
         return "redirect:/scene/loadscene";
+    }
+
+    @PostMapping("/newscene/{id}/addfigure")
+    public String   addFigure(@PathVariable("newSceneId") Long sceneId) {
+
     }
 }
