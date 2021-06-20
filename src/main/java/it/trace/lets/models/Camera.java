@@ -21,7 +21,12 @@ public class Camera {
     @ManyToOne
     private Scene   scene;
 
-    public Camera() {
+    private String  center;
 
+    private String  direction;
+
+    public Camera() {
+        this.center = "0,0,0";
+        this.direction = "0,0,0";
     }
 }

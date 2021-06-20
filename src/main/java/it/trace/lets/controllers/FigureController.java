@@ -1,8 +1,5 @@
 package it.trace.lets.controllers;
 
-import it.trace.lets.models.Figure;
-import it.trace.lets.models.figures.Plane;
-import it.trace.lets.models.figures.Sphere;
 import it.trace.lets.services.FigureService;
 import it.trace.lets.services.SceneService;
 import lombok.AllArgsConstructor;
@@ -21,21 +18,26 @@ public class FigureController {
 
     private final FigureService figureService;
 
-    @GetMapping("{id}/addsphere")
+    @GetMapping("{id}/addsphere/{figId}")
     public String   addSphere(
             @PathVariable("id") Long sceneId,
+            @PathVariable("figId") Long figId,
             Model model) {
-        Figure sphere = new Sphere();
-        model.addAttribute("figId", sphere.getId());
+//        Figure figure = new Figure();
+//        figureService.addFigure(figure);
+        model.addAttribute("figId", figId);
         return "figure/newSphere";
     }
 
-    @GetMapping("{id}/addplane")
+    @GetMapping("{id}/addplane/{figId}")
     public String   addPlane(
             @PathVariable("id") Long sceneId,
+            @PathVariable("figId") Long figId,
             Model model) {
-        Figure plane = new Plane();
-        model.addAttribute("figId", plane.getId());
+//        Figure figure = new Figure();
+//        figureService.addFigure(figure);
+//        model.addAttribute("figId", figure.getId());
+        model.addAttribute("figId", figId);
         return "figure/newPlane";
     }
 }

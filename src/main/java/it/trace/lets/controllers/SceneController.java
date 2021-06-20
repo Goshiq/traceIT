@@ -2,8 +2,11 @@ package it.trace.lets.controllers;
 
 import it.trace.lets.models.Camera;
 import it.trace.lets.models.Figure;
+import it.trace.lets.models.Light;
 import it.trace.lets.models.Scene;
+import it.trace.lets.services.CameraService;
 import it.trace.lets.services.FigureService;
+import it.trace.lets.services.LightService;
 import it.trace.lets.services.SceneService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +27,11 @@ public class SceneController {
     private final SceneService sceneService;
 
     private final FigureService figureService;
+
+    private final CameraService cameraService;
+
+    private final LightService lightService;
+
 
     @GetMapping("/newscene")
     public String   addScene(Model model) {
@@ -60,10 +68,28 @@ public class SceneController {
 
     @GetMapping("/newscene/{id}/addfigure")
     public String   addFigure(@PathVariable("id") Long sceneId, Model model) {
-//        Figure figure = new Figure();
-//        figure.setScene(sceneService.getScene(sceneId));
-//        figureService.addFigure(figure);
-//        model.addAttribute("newFigureId", figure.getId());
+        Figure figure = new Figure();
+        figure.setScene(sceneService.getScene(sceneId));
+        figureService.addFigure(figure);
+        model.addAttribute("newFigureId", figure.getId());
         return "figure/newFigure";
+    }
+
+    @GetMapping("/newscene/{id}/addcamera")
+    public String   addCamera(@PathVariable("id") Long sceneId, Model model) {
+        Camera camera = new Camera();
+        camera.setScene(sceneService.getScene(sceneId));
+        cameraService.addCamera(camera);
+        model.addAttribute("newCamera", camera.getId());
+        return "camera/newCamera";
+    }
+
+    @GetMapping("/newscene/{id}/addlight")
+    public String   addLight(@PathVariable("id") Long sceneId, Model model) {
+        Light   light = new Light();
+        light.setScene(sceneService.getScene(sceneId));
+        lightService.addLight(light);
+        model.addAttribute("newLight", light);
+        return "light/newLight";
     }
 }

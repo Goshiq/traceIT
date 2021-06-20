@@ -2,16 +2,11 @@ package it.trace.lets.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Light {
 
@@ -19,9 +14,18 @@ public class Light {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long    id;
 
+    @ManyToOne
+    private Scene   scene;
+
     private String  center;
 
-    private double  radius;
+    private Integer color;
 
-    private int     color;
+    private Double  intensity;
+
+    public Light() {
+        this.center = "0,0,0";
+        this.color = 0;
+        this.intensity = 0D;
+    }
 }

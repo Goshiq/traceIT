@@ -15,4 +15,8 @@ public class CameraService {
     public Camera   findById(Long id) {
         return cameraRepository.getById(id);
     }
+
+    public void addCamera(Camera camera) {
+        cameraRepository.save(camera);
+    }
 }

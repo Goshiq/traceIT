@@ -121,14 +121,24 @@
     <input class="button button_home" type="button" value="Back" onclick="history.back()">
 </div>
 <br/>
-<div class="text" style="font-size: 18px; width: auto">Выберите тип фигуры:
-    <br>
-    <a th:href="@{'addsphere/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>
-    <a th:href="@{'addplane/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>
-<!--    <a th:href="@{addsphere}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
-<!--    <a th:href="@{addplane}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
+<div class="text" style="font-size: 18px; width: auto">
+    <form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${newCamera}">
+        <label for="center">Координаты камеры (формат: X,Y,Z)</label>
+        <input type="text" th:field="*{center}" id="center"/>
+        <div style="color:red" th:if="${#fields.hasErrors('center')}" th:errors="*{center}">Error</div>
+        <br/>
+        <label for="direction">Направление камеры: </label>
+        <input type="text" th:field="*{direction}" id="direction"/>
+        <div style="color:red" th:if="${#fields.hasErrors('direction')}" th:errors="*{direction}">Error</div>
+<!--        <br/>-->
+<!--        <label for="email">Enter email: </label>-->
+<!--        <input type="text" th:field="*{email}" id="email"/>-->
+<!--        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>-->
+        <br/>
+        <input type="submit" value="Update!"/>
+    </form>
 </div>
-<!--    <a th:text="'Scene id: ' + ${prev}"/>-->
+    <a th:text="'id: ' + ${newCamera}"/>
 <div>
     <form>
 

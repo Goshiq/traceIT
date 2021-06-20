@@ -121,14 +121,33 @@
     <input class="button button_home" type="button" value="Back" onclick="history.back()">
 </div>
 <br/>
-<div class="text" style="font-size: 18px; width: auto">Выберите тип фигуры:
-    <br>
-    <a th:href="@{'addsphere/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>
-    <a th:href="@{'addplane/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>
+<div class="text" style="font-size: 18px; width: auto">
+<!--    <form th:method="POST" th:action="@{/people/{id}(id=${newLight.getId()})}" th:object="${newLight}">-->
+    <form th:method="GET" th:action="@{/}" th:object="${newLight}">
+        <label for="center">Координаты источника света (формат: X,Y,Z)</label>
+        <input type="text" th:field="*{center}" id="center"/>
+        <div style="color:red" th:if="${#fields.hasErrors('center')}" th:errors="*{center}">Error</div>
+        <br/>
+        <label for="color">Цвет источника света: </label>
+        <input type="number" th:field="*{color}" id="color"/>
+        <div style="color:red" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Error</div>
+        <br/>
+        <label for="intensity">Интенсивность: </label>
+        <input type="range" th:field="*{intensity}" id="intensity"/>
+        <div style="color:red" th:if="${#fields.hasErrors('intensity')}" th:errors="*{intensity}">Error</div>
+        <!--        <br/>-->
+        <!--        <label for="email">Enter email: </label>-->
+        <!--        <input type="text" th:field="*{email}" id="email"/>-->
+        <!--        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>-->
+        <br/>
+        <input class="button button_plane" type="submit" value="Save!"/>
+    </form>
+<!--    <a th:href="@{'addsphere/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
+<!--    <a th:href="@{'addplane/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
 <!--    <a th:href="@{addsphere}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
 <!--    <a th:href="@{addplane}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
 </div>
-<!--    <a th:text="'Scene id: ' + ${prev}"/>-->
+<!--    <a th:text="'id: ' + ${newLight}"/>-->
 <div>
     <form>
 
