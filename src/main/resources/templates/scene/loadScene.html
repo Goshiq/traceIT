@@ -18,53 +18,54 @@
             line-height: 37px;
         }
 
-      .button {
-        border: none;
-        color: white;
-        /*padding: 15px 32px;*/
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 30px;
-        margin: 4px 2px;
-        cursor: pointer;
-        outline: none;
-      }
+        .button {
+            border: none;
+            color: white;
+            /*padding: 15px 32px;*/
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 30px;
+            margin: 4px 2px;
+            cursor: pointer;
+            outline: none;
+            font-family: Copperplate,serif;
+        }
 
-      .button_home {
-        position: static;
-        width: 125px;
-        height: 46px;
-        left: 25px;
-        top: 25px;
-        font-size: 25px;
-        border-radius: 10px;
+        .button_home {
+            position: static;
+            width: 125px;
+            height: 46px;
+            left: 25px;
+            top: 25px;
+            font-size: 25px;
+            border-radius: 10px;
 
-        background: linear-gradient(102.87deg, #FF3A81 0%, #000000 133.31%, rgba(255, 255, 255, 0.323419) 137.24%, rgba(255, 58, 129, 0.203125) 137.25%);
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-      } /* Trace IT! */
+            background: linear-gradient(102.87deg, #FF3A81 0%, #000000 133.31%, rgba(255, 255, 255, 0.323419) 137.24%, rgba(255, 58, 129, 0.203125) 137.25%);
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        } /* Trace IT! */
 
-      .button:active {
-        background-color: #3e8e41;
-        box-shadow: 0 5px #666;
-        transform: translateY(4px);
-      }
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
 
     </style>
-  </head>
-  <body>
-  <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">Home</button></a>
-  <div class="text">Выберите сцену:
-      <div style="font-size: 18px">
-          <div th:each="scene: ${allScenes}">
-              <form th:method="POST" th:action="@{/scene/delete/{id}(id=${scene.getId()})}">
-                  <a style="text-decoration: none; color: darkslategrey"
-                     th:href="@{{id}(id=${scene.id})}"
-                     th:text="${scene.id} + ': ' + ${#dates.format(scene.date, 'dd-MM-yyyy   HH:mm')}"/>
-                  <input style="font-family: Copperplate,serif" type="submit" value="Удалить"/>
-              </form>
-          </div>
-      </div>
-  </div>
-  </body>
+</head>
+<body>
+<a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">Home</button></a>
+<div class="text">Выберите сцену:
+    <div style="font-size: 18px">
+        <div th:each="scene: ${allScenes}">
+            <form th:method="POST" th:action="@{/scene/delete/{id}(id=${scene.getId()})}">
+                <a style="text-decoration: none; color: darkslategrey"
+                   th:href="@{{id}(id=${scene.id})}"
+                   th:text="${scene.id} + ': ' + ${#dates.format(scene.date, 'dd-MM-yyyy   HH:mm')}"/>
+                <input style="font-family: Copperplate,serif" type="submit" value="Удалить"/>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
 </html>

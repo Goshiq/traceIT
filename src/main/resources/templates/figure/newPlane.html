@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Create a new figure</title>
+  <style>
+    .text {
+      position: static;
+      width: 1000px;
+      height: 47px;
+      left: 22px;
+      top: 94px;
+
+      font-family: "Copperplate";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 30px;
+      line-height: 37px;
+    }
+
+    .button {
+      border: none;
+      color: white;
+      /*padding: 15px 32px;*/
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 30px;
+      margin: 4px 2px;
+      cursor: pointer;
+      outline: none;
+      font-family: Copperplate,serif;
+    }
+
+    .button_home {
+      position: static;
+      width: 125px;
+      height: 46px;
+      left: 25px;
+      top: 25px;
+      font-size: 25px;
+      border-radius: 10px;
+
+      background: linear-gradient(102.87deg, #FF3A81 0%, #000000 133.31%, rgba(255, 255, 255, 0.323419) 137.24%, rgba(255, 58, 129, 0.203125) 137.25%);
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    } /* Trace IT! */
+
+    .button_figure {
+      position: static;
+      width: 150px;
+      height: 45px;
+      left: 25px;
+      top: 145px;
+
+      background: #454545;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 25px;
+    }
+
+    .button_light {
+      position: static;
+      width: 150px;
+      height: 45px;
+      left: 225px;
+      top: 145px;
+      background: #7f7f7f;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 25px;
+    }
+
+    .button_sphere {
+      position: static;
+
+      width: 125px;
+      height: 45px;
+      left: 25px;
+      top: 360px;
+
+      background: linear-gradient(102.87deg, #7B7B7B 0%, #000000 137.27%);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+    }
+
+    .button_plane {
+      position: static;
+
+      width: auto;
+      height: 45px;
+      left: 175px;
+      top: 360px;
+
+      background: linear-gradient(102.87deg, #7B7B7B 0%, #000000 137.27%);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+    }
+
+    .button:active {
+      background-color: rgba(99, 99, 99, 0.28);
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+
+  </style>
+</head>
+<body>
+<div>
+  <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">Home</button></a>
+  <input class="button button_home" type="button" value="Back" onclick="history.back()">
+</div>
+<br/>
+<div class="text" style="font-size: 18px; width: auto">
+  <br>
+  <a th:text="'Scene id: ' + ${id}"/>
+  <a th:text="'Figure id: ' + ${figId}"/>
+
+  <!--  <a th:href="@{'addsphere/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
+  <!--  <a th:href="@{'addplane/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
+</div>
+<!--<div>-->
+<!--    <a th:text="'Scene id: ' + ${newFigureId}"/>-->
+<!--</div>-->
+</body>
+</html>

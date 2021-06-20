@@ -29,6 +29,7 @@
             margin: 4px 2px;
             cursor: pointer;
             outline: none;
+            font-family: Copperplate,serif;
         }
 
         .button_home {
@@ -36,6 +37,19 @@
             width: 125px;
             height: 46px;
             left: 25px;
+            top: 25px;
+            font-size: 25px;
+            border-radius: 10px;
+
+            background: linear-gradient(102.87deg, #FF3A81 0%, #000000 133.31%, rgba(255, 255, 255, 0.323419) 137.24%, rgba(255, 58, 129, 0.203125) 137.25%);
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        } /* Trace IT! */
+
+        .button_back {
+            position: static;
+            width: 125px;
+            height: 46px;
+            left: 175px;
             top: 25px;
             font-size: 25px;
             border-radius: 10px;
@@ -67,15 +81,30 @@
             border-radius: 25px;
         }
 
-        .button_camera {
+        .button_sphere {
             position: static;
-            width: 150px;
+
+            width: 125px;
             height: 45px;
-            left: 225px;
-            top: 145px;
-            background: #eceaea;
+            left: 25px;
+            top: 360px;
+
+            background: linear-gradient(102.87deg, #3d679a 0%, #000000 137.27%);
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 25px;
+            border-radius: 10px;
+        }
+
+        .button_plane {
+            position: static;
+
+            width: auto;
+            height: 45px;
+            left: 175px;
+            top: 360px;
+
+            background: linear-gradient(102.87deg, #3d679a 0%, #000000 137.27%);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
         }
 
         .button:active {
@@ -89,17 +118,22 @@
 <body>
 <div>
     <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">Home</button></a>
+    <input class="button button_home" type="button" value="Back" onclick="history.back()">
 </div>
 <br/>
-<div class="text" style="font-size: 18px; width: 400px">
-    <label for="figures">Выберите тип фигуры:</label>
-    <select id="figures" name="figures" style="font-family: Copperplate,serif">
-        <option value="SPHERE">Сфера</option>
-        <option value="PLANE">Плоскость</option>
-    </select>
+<div class="text" style="font-size: 18px; width: auto">Выберите тип фигуры:
+    <br>
+<!--    <a th:href="@{'addsphere/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
+<!--    <a th:href="@{'addplane/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
+    <a th:href="@{addsphere}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>
+    <a th:href="@{addplane}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>
 </div>
-<!--<div>-->
-<!--    <a th:text="'Scene id: ' + ${id}"/>-->
-<!--</div>-->
+<!--    <a th:text="'Scene id: ' + ${prev}"/>-->
+<div>
+    <form>
+
+    </form>
+</div>
+
 </body>
 </html>

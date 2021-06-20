@@ -60,10 +60,10 @@ public class SceneController {
 
     @GetMapping("/newscene/{id}/addfigure")
     public String   addFigure(@PathVariable("id") Long sceneId, Model model) {
-        Figure figure = new Figure();
-        figure.setScene(sceneService.getScene(sceneId));
-        figureService.addFigure(figure);
-        model.addAttribute("newFigureId", figure.getId());
+//        Figure figure = new Figure();
+//        figure.setScene(sceneService.getScene(sceneId));
+//        figureService.addFigure(figure);
+//        model.addAttribute("newFigureId", figure.getId());
         return "figure/newFigure";
     }
 }
