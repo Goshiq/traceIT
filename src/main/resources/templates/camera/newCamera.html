@@ -123,11 +123,11 @@
 <br/>
 <div class="text" style="font-size: 18px; width: auto">
     <form th:method="GET" th:action="@{/}" th:object="${newCamera}">
-        <label for="center">Координаты камеры (формат: X,Y,Z)</label>
+        <label for="center">Координаты камеры (формат: X,Y,Z):</label>
         <input type="text" th:field="*{center}" id="center"/>
         <div style="color:red" th:if="${#fields.hasErrors('center')}" th:errors="*{center}">Error</div>
         <br/>
-        <label for="direction">Направление камеры: </label>
+        <label for="direction">Направление камеры (формат: X,Y,Z): </label>
         <input type="text" th:field="*{direction}" id="direction"/>
         <div style="color:red" th:if="${#fields.hasErrors('direction')}" th:errors="*{direction}">Error</div>
 <!--        <br/>-->

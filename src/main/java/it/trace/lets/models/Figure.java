@@ -3,6 +3,7 @@ package it.trace.lets.models;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.awt.*;
 
 @Entity
@@ -22,7 +23,8 @@ public class Figure {
 
     private String  direction;
 
-    private Double  radius;
+    @Min(value = 2, message = "Как ты себе представляешь сферу радиусом меньше 2?")
+    private Integer  radius;
 
     @ManyToOne
     private Scene   scene;
@@ -32,6 +34,6 @@ public class Figure {
         this.color = new Color(0,0,0);
         this.center = "0,0,0";
         this.direction = "0,0,0";
-        this.radius = 0D;
+        this.radius = 2;
     }
 }
