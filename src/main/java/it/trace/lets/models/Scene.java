@@ -22,13 +22,17 @@ public class Scene {
 
     private Date date;
 
-    @OneToMany(targetEntity = Figure.class, mappedBy = "scene", fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Figure.class, mappedBy = "scene", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Figure>    figures = new ArrayList<>();
 
-    @OneToMany(targetEntity = Camera.class, mappedBy = "scene", fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Camera.class, mappedBy = "scene", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Camera>    cameras = new ArrayList<>();
+
+    @OneToMany(targetEntity = Light.class, mappedBy = "scene", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Light>     lights = new ArrayList<>();
 
     public Scene() {
         this.date = new Date();
