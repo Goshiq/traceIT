@@ -25,6 +25,7 @@ public class FigureController {
             Model model) {
 //        Figure figure = new Figure();
 //        figureService.addFigure(figure);
+        model.addAttribute("figure", figureService.findById(figId));
         model.addAttribute("figId", figId);
         return "figure/newSphere";
     }
@@ -37,6 +38,7 @@ public class FigureController {
 //        Figure figure = new Figure();
 //        figureService.addFigure(figure);
 //        model.addAttribute("figId", figure.getId());
+        model.addAttribute("figure", figureService.findById(figId));
         model.addAttribute("figId", figId);
         return "figure/newPlane";
     }

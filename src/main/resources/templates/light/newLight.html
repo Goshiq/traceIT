@@ -129,7 +129,7 @@
         <div style="color:red" th:if="${#fields.hasErrors('center')}" th:errors="*{center}">Error</div>
         <br/>
         <label for="color">Цвет источника света: </label>
-        <input type="number" th:field="*{color}" id="color"/>
+        <input type="color" th:field="*{color}" id="color"/>
         <div style="color:red" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Error</div>
         <br/>
         <label for="intensity">Интенсивность: </label>

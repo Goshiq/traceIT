@@ -80,7 +80,7 @@ public class SceneController {
         Camera camera = new Camera();
         camera.setScene(sceneService.getScene(sceneId));
         cameraService.addCamera(camera);
-        model.addAttribute("newCamera", camera.getId());
+        model.addAttribute("newCamera", camera);
         return "camera/newCamera";
     }
 

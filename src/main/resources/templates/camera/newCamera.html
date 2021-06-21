@@ -122,7 +122,7 @@
 </div>
 <br/>
 <div class="text" style="font-size: 18px; width: auto">
-    <form th:method="PATCH" th:action="@{/people/{id}(id=${person.getId()})}" th:object="${newCamera}">
+    <form th:method="GET" th:action="@{/}" th:object="${newCamera}">
         <label for="center">Координаты камеры (формат: X,Y,Z)</label>
         <input type="text" th:field="*{center}" id="center"/>
         <div style="color:red" th:if="${#fields.hasErrors('center')}" th:errors="*{center}">Error</div>
@@ -135,10 +135,10 @@
 <!--        <input type="text" th:field="*{email}" id="email"/>-->
 <!--        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>-->
         <br/>
-        <input type="submit" value="Update!"/>
+        <input class="button button_plane" type="submit" value="Save!"/>
     </form>
 </div>
-    <a th:text="'id: ' + ${newCamera}"/>
+<!--    <a th:text="'id: ' + ${newCamera}"/>-->
 <div>
     <form>
 

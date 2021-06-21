@@ -3,6 +3,7 @@ package it.trace.lets.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.awt.*;
 
 @Entity
 @Data
@@ -15,7 +16,7 @@ public class Figure {
 
     private FigureType  type;
 
-    private Integer color;
+    private Color color;
 
     private String  center;
 
@@ -23,17 +24,14 @@ public class Figure {
 
     private Double  radius;
 
-    private Integer sideSize;
-
     @ManyToOne
     private Scene   scene;
 
     public Figure() {
         this.type = FigureType.NEW;
-        this.color = 0;
+        this.color = new Color(0,0,0);
         this.center = "0,0,0";
         this.direction = "0,0,0";
         this.radius = 0D;
-        this.sideSize = 0;
     }
 }

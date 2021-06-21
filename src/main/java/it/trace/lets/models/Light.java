@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.awt.*;
 
 @Entity
 @Data
@@ -19,13 +20,13 @@ public class Light {
 
     private String  center;
 
-    private Integer color;
+    private Color color;
 
     private Double  intensity;
 
     public Light() {
         this.center = "0,0,0";
-        this.color = 0;
+        this.color = new Color(0,0,0);
         this.intensity = 0D;
     }
 }
