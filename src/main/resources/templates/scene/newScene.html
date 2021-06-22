@@ -11,14 +11,14 @@
             left: 22px;
             top: 94px;
 
-            font-family: "Copperplate";
+            font-family: "Copperplate",serif;
             font-style: normal;
             font-weight: normal;
             font-size: 30px;
             line-height: 37px;
         }
 
-          .button {
+        .button {
             border: none;
             color: white;
             /*padding: 15px 32px;*/
@@ -30,43 +30,43 @@
             cursor: pointer;
             outline: none;
             font-family: Copperplate,serif;
-          }
+        }
 
-          .button_home {
-              position: static;
-              width: 125px;
-              height: 46px;
-              left: 25px;
-              top: 25px;
-              font-size: 25px;
-              border-radius: 10px;
+        .button_home {
+            position: static;
+            width: 125px;
+            height: 46px;
+            left: 25px;
+            top: 25px;
+            font-size: 25px;
+            border-radius: 10px;
 
-              background: linear-gradient(102.87deg, #FF3A81 0%, #000000 133.31%, rgba(255, 255, 255, 0.323419) 137.24%, rgba(255, 58, 129, 0.203125) 137.25%);
-              filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-          } /* Trace IT! */
+            background: linear-gradient(102.87deg, #FF3A81 0%, #000000 133.31%, rgba(255, 255, 255, 0.323419) 137.24%, rgba(255, 58, 129, 0.203125) 137.25%);
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        } /* Trace IT! */
 
-          .button_figure {
-              position: static;
-              width: 150px;
-              height: 45px;
-              left: 25px;
-              top: 145px;
+        .button_figure {
+            position: static;
+            width: 150px;
+            height: 45px;
+            left: 25px;
+            top: 145px;
 
-              background: linear-gradient(102.87deg, #3d679a 0%, #000000 137.27%);
-              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-              border-radius: 10px;
-          }
+            background: linear-gradient(102.87deg, #3d679a 0%, #000000 137.27%);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
 
-          .button_light {
-              position: static;
-              width: 150px;
-              height: 45px;
-              left: 225px;
-              top: 145px;
-              background: linear-gradient(102.87deg, #3d679a 0%, #000000 137.27%);
-              box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-              border-radius: 10px;
-          }
+        .button_light {
+            position: static;
+            width: 150px;
+            height: 45px;
+            left: 225px;
+            top: 145px;
+            background: linear-gradient(102.87deg, #3d679a 0%, #000000 137.27%);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
 
         .button_camera {
             position: static;
@@ -79,11 +79,11 @@
             border-radius: 10px;
         }
 
-          .button:active {
+        .button:active {
             background-color: rgba(99, 99, 99, 0.28);
             box-shadow: 0 5px #666;
             transform: translateY(4px);
-          }
+        }
 
     </style>
 </head>
@@ -105,42 +105,43 @@
     <a th:href="@{'newscene/' + ${newSceneId} + '/addcamera'}" style="text-decoration: none; color: whitesmoke"><button class="button button_camera" style="font-family: Copperplate,serif">Камера</button></a>
 </div>
 <br>
-<div class="text" style="font-size: 16px; top: 140px">
-    <div>Состав сцены:</div>
-    <hr>
-    <div>
-        <a th:text="${'Id: ' + newScene.id}"></a>
-    </div>
-    <div>
-        <a th:text="${'Дата создания: ' + #dates.format(newScene.date, 'dd-MM-yyyy   HH:mm')}"></a>
+<!--<div class="text" style="font-size: 16px; top: 140px">-->
+<!--    <div>Состав сцены:</div>-->
+<!--    <hr>-->
+<!--    <div>-->
+<!--        <a th:text="${'Id: ' + newScene.id}"></a>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <a th:text="${'Дата создания: ' + #dates.format(newScene.date, 'dd-MM-yyyy   HH:mm')}"></a>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="text" style="font-size: 16px">Фигуры:
+    <div th:each="fig: ${figures}">
+        <form th:method="POST" th:action="@{/figure/delete/{id}(id=${fig.id})}">
+            <a style="text-decoration: none; color: darkslategrey"
+               th:text="${fig.id}"/>
+            <input type="submit" value="Удалить"/>
+        </form>
     </div>
 </div>
-<!--    <div>Фигуры:-->
-<!--        <div th:each="fig: ${figures}">-->
-<!--            <form th:method="POST" th:action="@{/figure/delete/{id1}(id1=${newScene.getId()})/{id2}(id2=${fig.id})">-->
-<!--                <a style="text-decoration: none; color: darkslategrey"-->
-<!--                   th:text="${fig.id}}"/>-->
-<!--                <input type="submit" value="Удалить"/>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--<div>-->
-<!--    <form style="position: relative" th:method="POST" th:action="@{/scene/create}" th:object="${scene}">-->
-<!--    </form>-->
-<!--</div>-->
-<!--    <label for="name">Enter name: </label>-->
-<!--    <input type="text" th:field="*{name}" id="name"/>-->
-<!--    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error</div>-->
-<!--    <br/>-->
-<!--    <label for="age">Enter age: </label>-->
-<!--    <input type="text" th:field="*{age}" id="age"/>-->
-<!--    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</div>-->
-<!--    <br/>-->
-<!--    <label for="email">Enter email: </label>-->
-<!--    <input type="text" th:field="*{email}" id="email"/>-->
-<!--    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>-->
-<!--    <br/>-->
-<!--    <input type="submit" value="Create!"/>-->
+<div class="text" style="font-size: 16px">Камеры:
+    <div th:each="camera: ${cameras}">
+        <form th:method="POST" th:action="@{/camera/delete/{id}(id=${camera.id})}">
+            <a style="text-decoration: none; color: darkslategrey"
+               th:text="${camera.id}"/>
+            <input type="submit" value="Удалить"/>
+        </form>
+    </div>
+</div>
+<div class="text" style="font-size: 16px">Источники света:
+    <div th:each="light: ${lights}">
+        <form th:method="POST" th:action="@{/light/delete/{id}(id=${light.id})}">
+            <a style="text-decoration: none; color: darkslategrey"
+               th:text="${light.id}"/>
+            <input type="submit" value="Удалить"/>
+        </form>
+    </div>
+</div>
 </form>
 
 </body>

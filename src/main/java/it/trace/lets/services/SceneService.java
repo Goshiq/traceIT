@@ -2,6 +2,7 @@ package it.trace.lets.services;
 
 import it.trace.lets.models.Camera;
 import it.trace.lets.models.Figure;
+import it.trace.lets.models.Light;
 import it.trace.lets.models.Scene;
 import it.trace.lets.repository.FigureRepository;
 import it.trace.lets.repository.SceneRepository;
@@ -42,5 +43,10 @@ public class SceneService {
     public List<Camera> getCameras(Long id) {
         Scene   scene = sceneRepository.getById(id);
         return scene.getCameras();
+    }
+
+    public List<Light>  getLights(Long id) {
+        Scene   scene = sceneRepository.getById(id);
+        return scene.getLights();
     }
 }

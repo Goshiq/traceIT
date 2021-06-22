@@ -19,4 +19,8 @@ public class FigureService {
     public void     addFigure(Figure figure) {
         figureRepository.save(figure);
     }
+
+    public void     deleteFigure(Long id) {
+        figureRepository.deleteById(id);
+    }
 }

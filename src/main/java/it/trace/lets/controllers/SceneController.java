@@ -37,9 +37,13 @@ public class SceneController {
     public String   addScene(Model model) {
         Scene   scene = new Scene();
         sceneService.addScene(scene);
-        model.addAttribute("newScene", scene);
+//        model.addAttribute("newScene", scene);
         model.addAttribute("newSceneId", scene.getId());
-        return "scene/newScene";
+//
+//        model.addAttribute("figures", scene.getFigures());
+//        model.addAttribute("cameras", scene.getCameras());
+//        model.addAttribute("lights", scene.getLights());
+        return "scene/createScene";
     }
 
     @GetMapping("/loadscene")
@@ -50,8 +54,14 @@ public class SceneController {
 
     @GetMapping("/{id}")
     public String   showScene(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("scene", sceneService.getScene(id));
-        return "scene/showScene";
+        Scene   scene = sceneService.getScene(id);
+        model.addAttribute("newScene", scene);
+        model.addAttribute("newSceneId", scene.getId());
+
+        model.addAttribute("figures", scene.getFigures());
+        model.addAttribute("cameras", scene.getCameras());
+        model.addAttribute("lights", scene.getLights());
+        return "scene/newScene";
     }
 
     @PostMapping("/delete/{id}")
@@ -59,12 +69,12 @@ public class SceneController {
         sceneService.deleteScene(id);
         return "redirect:/scene/loadscene";
     }
-
-    @PostMapping("/create")
-    public String   creteScene(@RequestBody Scene scene) {
-        sceneService.addScene(scene);
-        return "redirect:/scene/loadscene";
-    }
+//
+//    @PostMapping("/create")
+//    public String   creteScene(@RequestBody Scene scene) {
+//        sceneService.addScene(scene);
+//        return "redirect:/scene/loadscene";
+//    }
 
     @GetMapping("/newscene/{id}/addfigure")
     public String   addFigure(@PathVariable("id") Long sceneId, Model model) {
