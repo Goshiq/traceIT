@@ -49,8 +49,6 @@ public class FigureController {
         Figure  figure = figureService.findById(id);
         Scene scene = figure.getScene();
         figureService.deleteFigure(id);
-        model.addAttribute("figures", scene.getFigures());
-        model.addAttribute("newSceneId", scene.getId());
         return "redirect:/scene/" + scene.getId();
     }
 }
