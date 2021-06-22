@@ -6,16 +6,15 @@
     <style>
         .text {
             position: static;
-            width: 1000px;
-            height: 47px;
-            left: 22px;
-            top: 94px;
+            width: auto;
+            height: auto;
+            left: auto;
+            top: auto;
 
-            font-family: "Copperplate";
+            font-family: "Copperplate",serif;
             font-style: normal;
             font-weight: normal;
             font-size: 30px;
-            line-height: 37px;
         }
 
         .button {
@@ -122,7 +121,7 @@
 </div>
 <br/>
 <div class="text" style="font-size: 18px; width: auto">
-<!--    <form th:method="POST" th:action="@{/people/{id}(id=${newLight.getId()})}" th:object="${newLight}">-->
+    <!--    <form th:method="POST" th:action="@{/people/{id}(id=${newLight.getId()})}" th:object="${newLight}">-->
     <form th:method="GET" th:action="@{/}" th:object="${newLight}">
         <label for="center">Координаты источника света (формат: X,Y,Z)</label>
         <input type="text" th:field="*{center}" id="center"/>
@@ -142,10 +141,10 @@
         <br/>
         <input class="button button_plane" type="submit" value="Save!"/>
     </form>
-<!--    <a th:href="@{'addsphere/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
-<!--    <a th:href="@{'addplane/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
-<!--    <a th:href="@{addsphere}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
-<!--    <a th:href="@{addplane}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
+    <!--    <a th:href="@{'addsphere/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
+    <!--    <a th:href="@{'addplane/' + ${newFigureId}}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
+    <!--    <a th:href="@{addsphere}" style="text-decoration: none; color: whitesmoke"><button class="button button_sphere" style="font-family: Copperplate,serif">Сфера</button></a>-->
+    <!--    <a th:href="@{addplane}" style="text-decoration: none; color: whitesmoke"><button class="button button_plane" style="font-family: Copperplate,serif">Плоскость</button></a>-->
 </div>
 <!--    <a th:text="'id: ' + ${newLight}"/>-->
 <div>

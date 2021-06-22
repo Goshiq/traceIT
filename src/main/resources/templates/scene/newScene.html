@@ -6,16 +6,15 @@
     <style>
         .text {
             position: static;
-            width: 1000px;
-            height: 47px;
-            left: 22px;
-            top: 94px;
+            width: auto;
+            height: auto;
+            left: auto;
+            top: auto;
 
             font-family: "Copperplate",serif;
             font-style: normal;
             font-weight: normal;
             font-size: 30px;
-            line-height: 37px;
         }
 
         .button {
@@ -90,6 +89,7 @@
 <body>
 <div>
     <a href="/" style="text-decoration: none; color: whitesmoke"><button class="button button_home">Home</button></a>
+    <input class="button button_home" type="button" value="Back" onclick="history.back()">
 </div>
 <br>
 <div class="text" style="font-size: 24px">
@@ -104,45 +104,38 @@
 <div>
     <a th:href="@{'newscene/' + ${newSceneId} + '/addcamera'}" style="text-decoration: none; color: whitesmoke"><button class="button button_camera" style="font-family: Copperplate,serif">Камера</button></a>
 </div>
+<hr>
+<a class="text">Состав сцены:</a>
+<p class="text" style="font-size: 16px">Фигуры:
+<div th:each="fig: ${figures}">
+    <form th:method="POST" th:action="@{/figure/delete/{id}(id=${fig.id})}">
+        <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
+           th:text="${fig.type}"/>
+        <input type="submit" value="Удалить"/>
+    </form>
+</div>
+</p>
 <br>
-<!--<div class="text" style="font-size: 16px; top: 140px">-->
-<!--    <div>Состав сцены:</div>-->
-<!--    <hr>-->
-<!--    <div>-->
-<!--        <a th:text="${'Id: ' + newScene.id}"></a>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <a th:text="${'Дата создания: ' + #dates.format(newScene.date, 'dd-MM-yyyy   HH:mm')}"></a>-->
-<!--    </div>-->
-<!--</div>-->
-<div class="text" style="font-size: 16px">Фигуры:
-    <div th:each="fig: ${figures}">
-        <form th:method="POST" th:action="@{/figure/delete/{id}(id=${fig.id})}">
-            <a style="text-decoration: none; color: darkslategrey"
-               th:text="${fig.id}"/>
-            <input type="submit" value="Удалить"/>
-        </form>
-    </div>
+<p class="text" style="font-size: 16px">Источники света:
+<div th:each="light: ${lights}">
+    <form th:method="POST" th:action="@{/light/delete/{id}(id=${light.id})}">
+        <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
+           th:style="${light.color}"
+           th:text="${light.id}"/>
+        <input type="submit" value="Удалить"/>
+    </form>
 </div>
-<div class="text" style="font-size: 16px">Камеры:
-    <div th:each="camera: ${cameras}">
-        <form th:method="POST" th:action="@{/camera/delete/{id}(id=${camera.id})}">
-            <a style="text-decoration: none; color: darkslategrey"
-               th:text="${camera.id}"/>
-            <input type="submit" value="Удалить"/>
-        </form>
-    </div>
+</p>
+<br>
+<p class="text" style="font-size: 16px">Камеры:
+<div th:each="camera: ${cameras}">
+    <form th:method="POST" th:action="@{/camera/delete/{id}(id=${camera.id})}">
+        <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
+           th:text="${camera.id}"/>
+        <input type="submit" value="Удалить"/>
+    </form>
 </div>
-<div class="text" style="font-size: 16px">Источники света:
-    <div th:each="light: ${lights}">
-        <form th:method="POST" th:action="@{/light/delete/{id}(id=${light.id})}">
-            <a style="text-decoration: none; color: darkslategrey"
-               th:text="${light.id}"/>
-            <input type="submit" value="Удалить"/>
-        </form>
-    </div>
-</div>
-</form>
+</p>
 
 </body>
 </html>

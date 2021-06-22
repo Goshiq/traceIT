@@ -1,6 +1,7 @@
 package it.trace.lets.services;
 
 import it.trace.lets.models.Figure;
+import it.trace.lets.models.FigureType;
 import it.trace.lets.repository.FigureRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,11 @@ public class FigureService {
 
     public void     deleteFigure(Long id) {
         figureRepository.deleteById(id);
+    }
+
+    public void updateType(Long figId, FigureType type) {
+        Figure figure = figureRepository.getById(figId);
+        figure.setType(type);
+        figureRepository.save(figure);
     }
 }
