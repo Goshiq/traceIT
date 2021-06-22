@@ -55,5 +55,6 @@ public class SceneService {
                 figureRepository.deleteById(fig.getId());
             }
         }
+//        sceneRepository.save(scene);
     }
 }

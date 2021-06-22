@@ -121,7 +121,7 @@
 </div>
 <br/>
 <div class="text" style="font-size: 18px; width: auto">
-    <form th:method="GET" th:action="@{/}" th:object="${newCamera}">
+    <form th:method="POST" th:action="@{/camera/{id}(id=${newCamera.id})}" th:object="${newCamera}">
         <label for="center">Координаты камеры (формат: X,Y,Z):</label>
         <input type="text" th:field="*{center}" id="center"/>
         <div style="color:red" th:if="${#fields.hasErrors('center')}" th:errors="*{center}">Error</div>
@@ -129,6 +129,10 @@
         <label for="direction">Направление камеры (формат: X,Y,Z): </label>
         <input type="text" th:field="*{direction}" id="direction"/>
         <div style="color:red" th:if="${#fields.hasErrors('direction')}" th:errors="*{direction}">Error</div>
+        <br/>
+        <label for="angle">Угол обзора камеры: </label>
+        <input type="number" th:field="*{angle}" id="angle"/>
+        <div style="color:red" th:if="${#fields.hasErrors('angle')}" th:errors="*{angle}">Error</div>
         <br/>
         <input class="button button_plane" type="submit" value="Save!"/>
     </form>

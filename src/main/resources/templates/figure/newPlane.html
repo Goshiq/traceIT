@@ -108,7 +108,7 @@
 </div>
 <br/>
 <div class="text" style="font-size: 18px; width: auto">
-  <form th:method="GET" th:action="@{/}" th:object="${figure}">
+  <form th:method="POST" th:action="@{/figure/{id}(id=${figure.id})}" th:object="${figure}">
     <label for="color">Цвет плоскости: </label>
     <input type="color" th:field="*{color}" id="color"/>
     <div style="color:red" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Error</div>

@@ -23,4 +23,8 @@ public class CameraService {
     public void deleteCamera(Long id) {
         cameraRepository.deleteById(id);
     }
+
+    public void update(Camera camera) {
+        cameraRepository.save(camera);
+    }
 }

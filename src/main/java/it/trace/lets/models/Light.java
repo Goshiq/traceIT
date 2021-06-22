@@ -20,20 +20,21 @@ public class Light {
 
     private String  center;
 
-    private Color color;
+    private String color;
 
     private Double  intensity;
 
     public Light() {
         this.center = "0,0,0";
-        this.color = new Color(0,0,0);
+        this.color = new Color(0,0,0).toString();
         this.intensity = 0D;
     }
 
     @Override
     public String toString() {
         return  "Точка расположения: [" + center + ']' +
-                " Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
+                " Цвет (R;G;B): [" + color + "]" +
+//                " Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
                 " Интенсивность освещения: [" + intensity + ']';
     }
 }

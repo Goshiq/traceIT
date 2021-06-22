@@ -31,4 +31,8 @@ public class FigureService {
         figure.setType(type);
         figureRepository.save(figure);
     }
+
+    public void update(Figure figure) {
+        figureRepository.save(figure);
+    }
 }

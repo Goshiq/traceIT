@@ -122,7 +122,7 @@
 <br/>
 <div class="text" style="font-size: 18px; width: auto">
     <!--    <form th:method="POST" th:action="@{/people/{id}(id=${newLight.getId()})}" th:object="${newLight}">-->
-    <form th:method="GET" th:action="@{/}" th:object="${newLight}">
+    <form th:method="POST" th:action="@{/light/{id}(id=${newLight.id})}" th:object="${newLight}">
         <label for="center">Координаты источника света (формат: X,Y,Z)</label>
         <input type="text" th:field="*{center}" id="center"/>
         <div style="color:red" th:if="${#fields.hasErrors('center')}" th:errors="*{center}">Error</div>

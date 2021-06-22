@@ -18,12 +18,11 @@ public class Figure {
     private Long    id;
 
     @ManyToOne
-    @JoinColumn(name = "scene_id")
     private Scene   scene;
 
     private FigureType  type;
 
-    private Color color;
+    private String color;
 
     private String  center;
 
@@ -34,7 +33,7 @@ public class Figure {
 
     public Figure() {
         this.type = FigureType.NEW;
-        this.color = new Color(0,0,0);
+        this.color = new Color(0,0,0).toString();
         this.center = "0,0,0";
         this.direction = "0,0,0";
         this.radius = 1;
@@ -49,14 +48,16 @@ public class Figure {
         if (this.type == FigureType.PLANE) {
             answer = type.getName() +
                     ": " +
-                    "Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
-                    "Координаты точки на плоскости: [" + center + "]" +
-                    "Направление нормали: [" + direction + "]";
+//                    "Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
+                    " Цвет (R;G;B): [" + color + "]" +
+                    " Координаты точки на плоскости: [" + center + "]" +
+                    " Направление нормали: [" + direction + "]";
         }
         else if (this.type == FigureType.SPHERE) {
             answer = type.getName() +
                     ": " +
-                    "Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
+//                    "Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
+                    " Цвет (R;G;B): [" + color + "]" +
                     " Координаты центра: [" + center + "]" +
                     " Радиус: [" + radius + "]";
         }

@@ -1,16 +1,14 @@
 package it.trace.lets.controllers;
 
-import it.trace.lets.models.Figure;
-import it.trace.lets.models.FigureType;
-import it.trace.lets.models.Scene;
+import it.trace.lets.models.*;
 import it.trace.lets.services.FigureService;
 import it.trace.lets.services.SceneService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -49,6 +47,19 @@ public class FigureController {
         Figure  figure = figureService.findById(id);
         Scene scene = figure.getScene();
         figureService.deleteFigure(id);
+        return "redirect:/scene/" + scene.getId();
+    }
+
+    @PostMapping("figure/{id}")
+    public String   saveFigure(@PathVariable("id") Long id,
+                               @ModelAttribute("figure") Figure figure,
+                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/index";
+        }
+        Scene scene = figureService.findById(id).getScene();
+        figure.setScene(scene);
+        figureService.update(figure);
         return "redirect:/scene/" + scene.getId();
     }
 }

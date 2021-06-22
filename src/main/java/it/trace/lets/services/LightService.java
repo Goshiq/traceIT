@@ -23,4 +23,8 @@ public class LightService {
     public void deleteLight(Long id) {
         lightRepository.deleteById(id);
     }
+
+    public void update(Light light) {
+        lightRepository.save(light);
+    }
 }
