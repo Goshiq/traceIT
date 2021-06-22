@@ -19,4 +19,8 @@ public class CameraService {
     public void addCamera(Camera camera) {
         cameraRepository.save(camera);
     }
+
+    public void deleteCamera(Long id) {
+        cameraRepository.deleteById(id);
+    }
 }

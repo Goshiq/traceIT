@@ -15,4 +15,12 @@ public class LightService {
     public void addLight(Light light) {
         lightRepository.save(light);
     }
+
+    public Light    findById(Long id) {
+        return lightRepository.getById(id);
+    }
+
+    public void deleteLight(Long id) {
+        lightRepository.deleteById(id);
+    }
 }

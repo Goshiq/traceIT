@@ -118,7 +118,7 @@
 <br>
 <p class="text" style="font-size: 16px">Источники света:
 <div th:each="light: ${lights}">
-    <form th:method="GET" th:action="@{/light/delete/{id}(id=${light.id})}">
+    <form th:method="DELETE" th:action="@{/light/delete/{id}(id=${light.id})}">
         <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
            th:text="${light}"/>
         <input type="submit" value="Удалить"/>
@@ -128,7 +128,7 @@
 <br>
 <p class="text" style="font-size: 16px">Камеры:
 <div th:each="camera: ${cameras}">
-    <form th:method="GET" th:action="@{/camera/delete/{id}(id=${camera.id})}">
+    <form th:method="DELETE" th:action="@{/camera/delete/{id}(id=${camera.id})}">
         <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
            th:text="${camera}"/>
         <input type="submit" value="Удалить"/>
