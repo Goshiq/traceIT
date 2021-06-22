@@ -129,18 +129,8 @@
         <label for="direction">Направление камеры (формат: X,Y,Z): </label>
         <input type="text" th:field="*{direction}" id="direction"/>
         <div style="color:red" th:if="${#fields.hasErrors('direction')}" th:errors="*{direction}">Error</div>
-<!--        <br/>-->
-<!--        <label for="email">Enter email: </label>-->
-<!--        <input type="text" th:field="*{email}" id="email"/>-->
-<!--        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</div>-->
         <br/>
         <input class="button button_plane" type="submit" value="Save!"/>
-    </form>
-</div>
-<!--    <a th:text="'id: ' + ${newCamera}"/>-->
-<div>
-    <form>
-
     </form>
 </div>
 

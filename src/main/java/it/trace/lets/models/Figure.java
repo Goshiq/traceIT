@@ -1,6 +1,8 @@
 package it.trace.lets.models;
 
 import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -16,6 +18,7 @@ public class Figure {
     private Long    id;
 
     @ManyToOne
+    @JoinColumn(name = "scene_id")
     private Scene   scene;
 
     private FigureType  type;
@@ -35,5 +38,28 @@ public class Figure {
         this.center = "0,0,0";
         this.direction = "0,0,0";
         this.radius = 1;
+    }
+
+    @Override
+    public String toString() {
+        String  answer;
+
+        answer = "Refresh the page ;)";
+
+        if (this.type == FigureType.PLANE) {
+            answer = type.getName() +
+                    ": " +
+                    "Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
+                    "Координаты точки на плоскости: [" + center + "]" +
+                    "Направление нормали: [" + direction + "]";
+        }
+        else if (this.type == FigureType.SPHERE) {
+            answer = type.getName() +
+                    ": " +
+                    "Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
+                    " Координаты центра: [" + center + "]" +
+                    " Радиус: [" + radius + "]";
+        }
+        return answer;
     }
 }

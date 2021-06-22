@@ -29,4 +29,11 @@ public class Light {
         this.color = new Color(0,0,0);
         this.intensity = 0D;
     }
+
+    @Override
+    public String toString() {
+        return  "Точка расположения: [" + center + ']' +
+                " Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
+                " Интенсивность освещения: [" + intensity + ']';
+    }
 }

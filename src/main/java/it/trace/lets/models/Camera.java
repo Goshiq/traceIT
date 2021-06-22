@@ -25,8 +25,18 @@ public class Camera {
 
     private String  direction;
 
+    private Integer angle;
+
     public Camera() {
         this.center = "0,0,0";
         this.direction = "0,0,0";
+        this.angle = 0;
+    }
+
+    @Override
+    public String toString() {
+        return  "Точка обзора: [" + center + ']' +
+                " Направление: [" + direction + ']' +
+                " Угол обзора: [" + angle + ']';
     }
 }

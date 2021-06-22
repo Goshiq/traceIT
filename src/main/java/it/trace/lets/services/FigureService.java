@@ -2,6 +2,7 @@ package it.trace.lets.services;
 
 import it.trace.lets.models.Figure;
 import it.trace.lets.models.FigureType;
+import it.trace.lets.models.Scene;
 import it.trace.lets.repository.FigureRepository;
 import org.springframework.stereotype.Service;
 

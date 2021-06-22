@@ -1,9 +1,6 @@
 package it.trace.lets.services;
 
-import it.trace.lets.models.Camera;
-import it.trace.lets.models.Figure;
-import it.trace.lets.models.Light;
-import it.trace.lets.models.Scene;
+import it.trace.lets.models.*;
 import it.trace.lets.repository.FigureRepository;
 import it.trace.lets.repository.SceneRepository;
 import lombok.AllArgsConstructor;
@@ -48,5 +45,15 @@ public class SceneService {
     public List<Light>  getLights(Long id) {
         Scene   scene = sceneRepository.getById(id);
         return scene.getLights();
+    }
+
+    public void clearFigures (Scene scene) {
+        List<Figure>    figures = scene.getFigures();
+        for (Figure fig:figures
+             ) {
+            if (fig.getType() == FigureType.NEW) {
+                figureRepository.deleteById(fig.getId());
+            }
+        }
     }
 }

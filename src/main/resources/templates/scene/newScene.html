@@ -108,9 +108,9 @@
 <a class="text">Состав сцены:</a>
 <p class="text" style="font-size: 16px">Фигуры:
 <div th:each="fig: ${figures}">
-    <form th:method="POST" th:action="@{/figure/delete/{id}(id=${fig.id})}">
+    <form th:method="DELETE" th:action="@{/figure/delete/{id}(id=${fig.id})}">
         <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
-           th:text="${fig.type}"/>
+           th:text="${fig}"/>
         <input type="submit" value="Удалить"/>
     </form>
 </div>
@@ -118,10 +118,9 @@
 <br>
 <p class="text" style="font-size: 16px">Источники света:
 <div th:each="light: ${lights}">
-    <form th:method="POST" th:action="@{/light/delete/{id}(id=${light.id})}">
+    <form th:method="GET" th:action="@{/light/delete/{id}(id=${light.id})}">
         <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
-           th:style="${light.color}"
-           th:text="${light.id}"/>
+           th:text="${light}"/>
         <input type="submit" value="Удалить"/>
     </form>
 </div>
@@ -129,9 +128,9 @@
 <br>
 <p class="text" style="font-size: 16px">Камеры:
 <div th:each="camera: ${cameras}">
-    <form th:method="POST" th:action="@{/camera/delete/{id}(id=${camera.id})}">
+    <form th:method="GET" th:action="@{/camera/delete/{id}(id=${camera.id})}">
         <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
-           th:text="${camera.id}"/>
+           th:text="${camera}"/>
         <input type="submit" value="Удалить"/>
     </form>
 </div>

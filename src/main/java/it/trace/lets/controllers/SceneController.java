@@ -9,15 +9,9 @@ import it.trace.lets.services.FigureService;
 import it.trace.lets.services.LightService;
 import it.trace.lets.services.SceneService;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import org.dom4j.rule.Mode;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -37,12 +31,7 @@ public class SceneController {
     public String   addScene(Model model) {
         Scene   scene = new Scene();
         sceneService.addScene(scene);
-//        model.addAttribute("newScene", scene);
         model.addAttribute("newSceneId", scene.getId());
-//
-//        model.addAttribute("figures", scene.getFigures());
-//        model.addAttribute("cameras", scene.getCameras());
-//        model.addAttribute("lights", scene.getLights());
         return "scene/createScene";
     }
 
@@ -55,6 +44,7 @@ public class SceneController {
     @GetMapping("/{id}")
     public String   showScene(@PathVariable("id") Long id, Model model) {
         Scene   scene = sceneService.getScene(id);
+        sceneService.clearFigures(scene);
         model.addAttribute("newScene", scene);
         model.addAttribute("newSceneId", scene.getId());
 
@@ -69,12 +59,6 @@ public class SceneController {
         sceneService.deleteScene(id);
         return "redirect:/scene/loadscene";
     }
-//
-//    @PostMapping("/create")
-//    public String   creteScene(@RequestBody Scene scene) {
-//        sceneService.addScene(scene);
-//        return "redirect:/scene/loadscene";
-//    }
 
     @GetMapping("/newscene/{id}/addfigure")
     public String   addFigure(@PathVariable("id") Long sceneId, Model model) {
