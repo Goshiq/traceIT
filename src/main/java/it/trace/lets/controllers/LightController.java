@@ -32,10 +32,10 @@ public class LightController {
 
     @PostMapping("/{id}")
     public String   saveLight(@PathVariable("id") Long id,
-                              @ModelAttribute("newLight") Light light,
+                              @ModelAttribute("newLight") @Valid Light light,
                               BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "/index";
+            return "/light/newLight";
         Scene scene = lightService.findById(id).getScene();
         light.setScene(scene);
         lightService.update(light);

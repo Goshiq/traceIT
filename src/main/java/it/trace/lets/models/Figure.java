@@ -53,16 +53,14 @@ public class Figure {
         if (this.type == FigureType.PLANE) {
             answer = type.getName() +
                     ": " +
-//                    "Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
-                    " Цвет (R;G;B): [" + color + "]" +
+                    " Цвет: [" + color + "]" +
                     " Координаты точки на плоскости: [" + center + "]" +
                     " Направление нормали: [" + direction + "]";
         }
         else if (this.type == FigureType.SPHERE) {
             answer = type.getName() +
                     ": " +
-//                    "Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
-                    " Цвет (R;G;B): [" + color + "]" +
+                    " Цвет: [" + color + "]" +
                     " Координаты центра: [" + center + "]" +
                     " Радиус: [" + radius + "]";
         }

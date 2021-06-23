@@ -29,10 +29,10 @@ public class CameraController {
 
     @PostMapping("/{id}")
     public String   saveCamera(@PathVariable("id") Long id,
-                               @ModelAttribute("newCamera") Camera camera,
+                               @Valid @ModelAttribute("newCamera") Camera camera,
                                BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "/index";
+            return "/camera/newCamera";
         Scene scene = cameraService.findById(id).getScene();
         camera.setScene(scene);
         cameraService.update(camera);

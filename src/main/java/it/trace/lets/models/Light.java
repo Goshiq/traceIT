@@ -35,8 +35,7 @@ public class Light {
     @Override
     public String toString() {
         return  "Точка расположения: [" + center + ']' +
-                " Цвет (R;G;B): [" + color + "]" +
-//                " Цвет (R;G;B): [" + color.getRed() + ";" + color.getGreen() + ";" + color.getBlue() + "]" +
+                " Цвет: [" + color + "]" +
                 " Интенсивность освещения: [" + intensity/100 + ']';
     }
 }
