@@ -60,7 +60,7 @@ public class SceneController {
         return "redirect:/scene/loadscene";
     }
 
-    @GetMapping("/newscene/{id}/addfigure")
+    @GetMapping("/{id}/addfigure")
     public String   addFigure(@PathVariable("id") Long sceneId, Model model) {
         Figure figure = new Figure();
         figure.setScene(sceneService.getScene(sceneId));
@@ -69,7 +69,7 @@ public class SceneController {
         return "figure/newFigure";
     }
 
-    @GetMapping("/newscene/{id}/addcamera")
+    @GetMapping("/{id}/addcamera")
     public String   addCamera(@PathVariable("id") Long sceneId, Model model) {
         Camera camera = new Camera();
         camera.setScene(sceneService.getScene(sceneId));
@@ -78,7 +78,7 @@ public class SceneController {
         return "camera/newCamera";
     }
 
-    @GetMapping("/newscene/{id}/addlight")
+    @GetMapping("/{id}/addlight")
     public String   addLight(@PathVariable("id") Long sceneId, Model model) {
         Light   light = new Light();
         light.setScene(sceneService.getScene(sceneId));

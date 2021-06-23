@@ -121,6 +121,7 @@
     <input type="text" th:field="*{direction}" id="direction"/>
     <div style="color:red" th:if="${#fields.hasErrors('direction')}" th:errors="*{direction}">Error</div>
     <br/>
+    <input type="hidden" th:field="*{type}" id="type"/>
     <input class="button button_plane" type="submit" value="Save!"/>
   </form>
 </div>

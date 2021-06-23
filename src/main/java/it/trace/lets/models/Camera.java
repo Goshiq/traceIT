@@ -3,6 +3,7 @@ package it.trace.lets.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
@@ -24,12 +26,14 @@ public class Camera {
     @ManyToOne
     private Scene   scene;
 
-    @Valid
+    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
     private String  center;
 
+    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
     private String  direction;
 
-//    @Max(value = 180, message = "Угол обзора в пределах 45-180")
+//    @Min(value = 45, message = "Угол обзора в пределах 45-180")
+    @Max(value = 180, message = "Угол обзора в пределах 45-180")
     private Integer angle;
 
     public Camera() {

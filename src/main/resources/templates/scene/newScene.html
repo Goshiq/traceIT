@@ -96,13 +96,13 @@
     <label>Выберите объект для добавления в сцену:</label>
 </div>
 <div>
-    <a th:href="@{'newscene/' + ${newSceneId} + '/addfigure'}" style="text-decoration: none; color: whitesmoke"><button class="button button_figure" style="font-family: Copperplate,serif">Фигура</button></a>
+    <a th:href="@{${newSceneId} + '/addfigure'}" style="text-decoration: none; color: whitesmoke"><button class="button button_figure" style="font-family: Copperplate,serif">Фигура</button></a>
 </div>
 <div>
-    <a th:href="@{'newscene/' + ${newSceneId} + '/addlight'}" style="text-decoration: none; color: whitesmoke"><button class="button button_light" style="font-family: Copperplate,serif">Свет</button></a>
+    <a th:href="@{${newSceneId} + '/addlight'}" style="text-decoration: none; color: whitesmoke"><button class="button button_light" style="font-family: Copperplate,serif">Свет</button></a>
 </div>
 <div>
-    <a th:href="@{'newscene/' + ${newSceneId} + '/addcamera'}" style="text-decoration: none; color: whitesmoke"><button class="button button_camera" style="font-family: Copperplate,serif">Камера</button></a>
+    <a th:href="@{${newSceneId} + '/addcamera'}" style="text-decoration: none; color: whitesmoke"><button class="button button_camera" style="font-family: Copperplate,serif">Камера</button></a>
 </div>
 <hr>
 <a class="text">Состав сцены:</a>

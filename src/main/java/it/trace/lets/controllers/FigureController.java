@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @Controller
 @AllArgsConstructor
@@ -19,24 +21,24 @@ public class FigureController {
 
     private final FigureService figureService;
 
-    @GetMapping("/scene/newscene/{id}/addsphere/{figId}")
+    @PostMapping("/addsphere/{figId}")
     public String   addSphere(
-            @PathVariable("id") Long sceneId,
             @PathVariable("figId") Long figId,
             Model model) {
         figureService.updateType(figId, FigureType.SPHERE);
         model.addAttribute("figure", figureService.findById(figId));
         model.addAttribute("figId", figId);
         return "figure/newSphere";
+//        return "redirect:" + figId;
     }
 
-    @GetMapping("/scene/newscene/{id}/addplane/{figId}")
+    @PostMapping("/addplane/{figId}")
     public String   addPlane(
-            @PathVariable("id") Long sceneId,
             @PathVariable("figId") Long figId,
             Model model) {
         figureService.updateType(figId, FigureType.PLANE);
-        model.addAttribute("figure", figureService.findById(figId));
+        Figure figure = figureService.findById(figId);
+        model.addAttribute("figure", figure);
         model.addAttribute("figId", figId);
         return "figure/newPlane";
     }
@@ -52,10 +54,19 @@ public class FigureController {
 
     @PostMapping("figure/{id}")
     public String   saveFigure(@PathVariable("id") Long id,
-                               @ModelAttribute("figure") Figure figure,
+                               @ModelAttribute("figure") @Valid Figure figure,
                                BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/index";
+            if (figure.getType() == FigureType.SPHERE) {
+                return "figure/newSphere";
+            }
+            else if (figure.getType() == FigureType.PLANE) {
+                return "figure/newPlane";
+            }
+            else {
+                figureService.deleteFigure(id);
+                return "/index";
+            }
         }
         Scene scene = figureService.findById(id).getScene();
         figure.setScene(scene);

@@ -121,6 +121,7 @@
         <input type="number" th:field="*{radius}" id="radius"/>
         <div style="color:red" th:if="${#fields.hasErrors('radius')}" th:errors="*{radius}">Error</div>
         <br/>
+        <input type="hidden" th:field="*{type}" id="type"/>
         <input class="button button_sphere" type="submit" value="Save!"/>
     </form>
 </div>

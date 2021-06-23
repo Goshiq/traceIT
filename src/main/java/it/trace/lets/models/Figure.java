@@ -5,7 +5,9 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
 import java.awt.*;
 
 @Entity
@@ -22,10 +24,13 @@ public class Figure {
 
     private FigureType  type;
 
+//    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
     private String color;
 
+    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
     private String  center;
 
+    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
     private String  direction;
 
     @Min(value = 1, message = "Как ты себе представляешь сферу радиусом меньше 1?")
