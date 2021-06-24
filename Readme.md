@@ -1,6 +1,6 @@
 # traceIT
 ### Still beta
-It is a simple tool to make a scene for 3D-engine: https://github.com/Goshiq/RT
+It is a web-tool to make a scene for 3D-engine: https://github.com/Goshiq/RT
 
 Steps to create a scene:
 - 1 Press "Новая сцена"(New scene) to create new scene
