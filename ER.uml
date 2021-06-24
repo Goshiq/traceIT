@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>d9e66c58-e134-46e1-a9de-69ce4b6b4a83.SCHEMA:postgres.public</OriginalElement>
+  <nodes>
+    <node x="215.0" y="128.0">d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.figure</node>
+    <node x="238.0" y="0.0">d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.scene</node>
+    <node x="410.0" y="150.0">d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.camera</node>
+    <node x="0.0" y="150.0">d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.light</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.light" target="d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.scene" relationship="REFERENCES">
+      <point x="0.0" y="-72.0" />
+      <point x="97.5" y="103.0" />
+      <point x="302.5" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.figure" target="d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.scene" relationship="REFERENCES">
+      <point x="0.0" y="-94.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+    <edge source="d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.camera" target="d9e66c58-e134-46e1-a9de-69ce4b6b4a83.TABLE:postgres.public.scene" relationship="REFERENCES">
+      <point x="0.0" y="-72.0" />
+      <point x="497.5" y="103.0" />
+      <point x="302.5" y="103.0" />
+      <point x="0.0" y="39.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="292.5" y="158.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
