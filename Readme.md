@@ -11,3 +11,7 @@ Steps to create a scene:
 - 2.1.2 "Плоскость"(Plane)
 - 2.2 "Свет"(Light)
 - 2.3 "Камера"(Camera)
+
+ER-Diagram:
+
+![Class Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/Zingam/Markdown-Document-UML-Use-Test/master/UML/Instance.puml)
