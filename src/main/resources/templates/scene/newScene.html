@@ -110,6 +110,7 @@
 <div th:each="fig: ${figures}">
     <form th:method="DELETE" th:action="@{/figure/delete/{id}(id=${fig.id})}">
         <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
+           th:href="'/figure/' + ${fig.id}"
            th:text="${fig}"/>
         <input type="submit" value="Удалить"/>
     </form>
@@ -120,6 +121,7 @@
 <div th:each="light: ${lights}">
     <form th:method="DELETE" th:action="@{/light/delete/{id}(id=${light.id})}">
         <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
+           th:href="'/light/' + ${light.id}"
            th:text="${light}"/>
         <input type="submit" value="Удалить"/>
     </form>
@@ -130,6 +132,7 @@
 <div th:each="camera: ${cameras}">
     <form th:method="DELETE" th:action="@{/camera/delete/{id}(id=${camera.id})}">
         <a class="text" style="text-decoration: none; color: darkslategrey; font-size: 16px"
+           th:href="'/camera/' + ${camera.id}"
            th:text="${camera}"/>
         <input type="submit" value="Удалить"/>
     </form>

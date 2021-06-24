@@ -52,6 +52,20 @@ public class FigureController {
         return "redirect:/scene/" + scene.getId();
     }
 
+    @GetMapping("figure/{id}")
+    public String   editFigure(@PathVariable("id") Long id,
+                               Model model) {
+        Figure  figure = figureService.findById(id);
+        model.addAttribute("figure", figure);
+        if (figure.getType() == FigureType.PLANE) {
+            return "/figure/newPlane";
+        }
+        else if (figure.getType() == FigureType.SPHERE) {
+            return "/figure/newSphere";
+        }
+        return "/index";
+    }
+
     @PostMapping("figure/{id}")
     public String   saveFigure(@PathVariable("id") Long id,
                                @ModelAttribute("figure") @Valid Figure figure,

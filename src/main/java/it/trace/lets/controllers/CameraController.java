@@ -27,6 +27,14 @@ public class CameraController {
         return "redirect:/scene/" + scene.getId();
     }
 
+    @GetMapping("/{id}")
+    public String   editCamera(@PathVariable("id") Long id,
+                               Model model) {
+        Camera  camera = cameraService.findById(id);
+        model.addAttribute("newCamera", camera);
+        return "/camera/newCamera";
+    }
+
     @PostMapping("/{id}")
     public String   saveCamera(@PathVariable("id") Long id,
                                @Valid @ModelAttribute("newCamera") Camera camera,

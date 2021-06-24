@@ -7,10 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -23,11 +20,19 @@ public class LightController {
 
     @PostMapping("/delete/{id}")
     public String   deleteLight(@PathVariable("id") Long id,
-                                 Model model) {
+                                Model model) {
         Light light = lightService.findById(id);
         Scene scene = light.getScene();
         lightService.deleteLight(id);
         return "redirect:/scene/" + scene.getId();
+    }
+
+    @GetMapping("/{id}")
+    public String   editLight(@PathVariable("id") Long id,
+                              Model model) {
+        Light   light = lightService.findById(id);
+        model.addAttribute("newLight", light);
+        return "/light/newLight";
     }
 
     @PostMapping("/{id}")
