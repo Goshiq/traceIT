@@ -24,22 +24,23 @@ public class Camera {
     @ManyToOne
     private Scene   scene;
 
-    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
+    @NotNull
+    @Pattern(regexp = "^-?\\d+,-?\\d+,-?\\d+$", message = "Формат ввода: X,Y,Z")
     private String  center;
 
-    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
+    @NotNull
+    @Pattern(regexp = "^-?\\d+,-?\\d+,-?\\d+$", message = "Формат ввода: X,Y,Z")
     private String  direction;
 
-//    @Pattern(regexp = "^\\b([1-9]|[1-9][0-9]|1[0-7][0-9]|180)\\b$", message = "Угол лежит в пределах 45-180")
-//    @NotNull
-//    @Min(45)
-    @Max(180)
+    @NotNull
+    @Min(value = 45, message = "Угол обзора камеры не меньше 45")
+    @Max(value = 180, message = "Угол обзора камеры не больше 180")
     private Integer angle;
 
     public Camera() {
         this.center = "0,0,0";
         this.direction = "0,0,0";
-        this.angle = 0;
+        this.angle = 45;
     }
 
     @Override

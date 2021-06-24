@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.awt.*;
 
@@ -19,7 +20,8 @@ public class Light {
     @ManyToOne
     private Scene   scene;
 
-    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
+    @NotNull
+    @Pattern(regexp = "^-?\\d+,-?\\d+,-?\\d+$", message = "Формат ввода: X,Y,Z")
     private String  center;
 
     private String color;

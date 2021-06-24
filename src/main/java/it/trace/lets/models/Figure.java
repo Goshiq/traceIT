@@ -7,6 +7,7 @@ import org.hibernate.annotations.NotFoundAction;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.awt.*;
 
@@ -24,15 +25,17 @@ public class Figure {
 
     private FigureType  type;
 
-//    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
     private String color;
 
-    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
+    @NotNull
+    @Pattern(regexp = "^-?\\d+,-?\\d+,-?\\d+$", message = "Формат ввода: X,Y,Z")
     private String  center;
 
-    @Pattern(regexp = "^\\d+,\\d+,\\d+$", message = "Формат ввода: X,Y,Z")
+    @NotNull
+    @Pattern(regexp = "^-?\\d+,-?\\d+,-?\\d+$", message = "Формат ввода: X,Y,Z")
     private String  direction;
 
+    @NotNull
     @Min(value = 1, message = "Как ты себе представляешь сферу радиусом меньше 1?")
     private Integer  radius;
 
