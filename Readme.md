@@ -14,4 +14,4 @@ Steps to create a scene:
 
 ER-Diagram:
 
-![Class Diagram](https://github.com/Goshiq/traceIT/blob/main/ER.uml)
+![Class Diagram](https://github.com/Goshiq/traceIT/blob/main/ER-Diagram.png)
