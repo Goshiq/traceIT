@@ -1,7 +1,7 @@
 # traceIT
 ### Still beta
 
-It is a web-tool to make a scene for 3D-engine: https://github.com/ifanzilka/miniRT
+It is a web-tool to make a scene for 3D-engine: https://github.com/Goshiq/RT
 
 ## Starting
 - You can use docker to start the project
@@ -28,5 +28,4 @@ Steps to create a scene:
 - 3 You can print the scene in the miniRT project format by pressing "Получить сцену"(Get the scene) 
 
 ER-Diagram:
-
 ![Class Diagram](https://github.com/Goshiq/traceIT/blob/main/ER-Diagram.png)
