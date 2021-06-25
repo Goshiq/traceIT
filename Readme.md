@@ -25,6 +25,7 @@ Steps to create a scene:
 - 2.1.2 "Плоскость"(Plane)
 - 2.2 "Свет"(Light)
 - 2.3 "Камера"(Camera)
+- 3 You can print the scene in the miniRT project format by pressing "Получить сцену"(Get the scene) 
 
 ER-Diagram:
 
