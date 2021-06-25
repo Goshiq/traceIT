@@ -6,7 +6,11 @@ It is a web-tool to make a scene for 3D-engine: https://github.com/ifanzilka/min
 ## Starting
 You can use docker to start the project
 ```C
-git clone git@github.com:Goshiq/traceIT.git && cd traceIT
+git clone git@github.com:Goshiq/traceIT.git && cd traceIT/Dockerize
+```
+Start the script
+```C
+/bin/sh start_spp.sh
 ```
 
 Steps to create a scene:
