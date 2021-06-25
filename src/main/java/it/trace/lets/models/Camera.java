@@ -49,4 +49,8 @@ public class Camera {
                 " Направление: [" + direction + ']' +
                 " Угол обзора: [" + angle + ']';
     }
+
+    public String   print() {
+        return "c " + this.center + " " + this.direction + " " + this.angle;
+    }
 }

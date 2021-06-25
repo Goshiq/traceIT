@@ -8,6 +8,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.awt.*;
 
+import static it.trace.lets.utils.ColorConverter.getRGB;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -39,5 +41,9 @@ public class Light {
         return  "Точка расположения: [" + center + ']' +
                 " Цвет: [" + color + "]" +
                 " Интенсивность освещения: [" + intensity/100 + ']';
+    }
+
+    public String print() {
+        return "l " + this.center + " " + this.intensity/100 + " " + getRGB(this.color);
     }
 }

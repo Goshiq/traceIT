@@ -11,6 +11,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.awt.*;
 
+import static it.trace.lets.utils.ColorConverter.getRGB;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -68,5 +70,19 @@ public class Figure {
                     " Радиус: [" + radius + "]";
         }
         return answer;
+    }
+
+    public String print() {
+        String ans;
+        if (this.type == FigureType.SPHERE) {
+            ans = "sp " + this.center + " " + this.radius + " " + getRGB(this.color);
+        }
+        else if (this.type == FigureType.PLANE) {
+            ans = "pl " + this.direction + " " + getRGB(this.color);
+        }
+        else {
+            ans = "type of the figure is not set";
+        }
+        return ans;
     }
 }

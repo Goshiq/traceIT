@@ -86,4 +86,11 @@ public class SceneController {
         model.addAttribute("newLight", light);
         return "light/newLight";
     }
+
+    @GetMapping("/{id}/print")
+    public String   printScene(@PathVariable("id") Long sceneId, Model model) {
+        Scene scene = sceneService.getScene(sceneId);
+        model.addAttribute("scene", scene);
+        return "scene/printScene";
+    }
 }

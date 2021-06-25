@@ -1,4 +1,4 @@
 FROM openjdk
-COPY lets-0.0.1-SNAPSHOT.jar exec.jar
+COPY lets-0.0.1-SNAPSHOT.jar .
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "exec.jar"]
+ENTRYPOINT ["java", "-jar", "lets-0.0.1-SNAPSHOT.jar"]
