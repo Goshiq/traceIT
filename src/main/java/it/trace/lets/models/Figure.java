@@ -78,7 +78,7 @@ public class Figure {
             ans = "sp " + this.center + " " + this.radius + " " + getRGB(this.color);
         }
         else if (this.type == FigureType.PLANE) {
-            ans = "pl " + this.direction + " " + getRGB(this.color);
+            ans = "pl " + this.center + " " + this.direction + " " + getRGB(this.color);
         }
         else {
             ans = "type of the figure is not set";
