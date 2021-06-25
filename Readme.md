@@ -13,9 +13,7 @@ git clone git@github.com:Goshiq/traceIT.git && cd traceIT/Dockerize
 /bin/sh start_spp.sh
 ```
 - Open the page:
-```html
 http://localhost:8080
-```
 
 ## Using the tool
 Steps to create a scene:
