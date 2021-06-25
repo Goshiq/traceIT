@@ -40,7 +40,7 @@ public class Camera {
     public Camera() {
         this.center = "0,0,0";
         this.direction = "0,0,0";
-        this.angle = 45;
+        this.angle = 90;
     }
 
     @Override
