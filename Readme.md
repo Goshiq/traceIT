@@ -4,15 +4,16 @@
 It is a web-tool to make a scene for 3D-engine: https://github.com/ifanzilka/miniRT
 
 ## Starting
-You can use docker to start the project
+- You can use docker to start the project
 ```C
 git clone git@github.com:Goshiq/traceIT.git && cd traceIT/Dockerize
 ```
-Start the script
+- Start the script
 ```C
 /bin/sh start_spp.sh
 ```
 
+## Using the tool
 Steps to create a scene:
 - 1 Press "Новая сцена"(New scene) to create new scene
 - 1.1 Press "Открыть сцену"(Load scene) to edit existed one
