@@ -32,7 +32,7 @@ public class LightController {
                               Model model) {
         Light   light = lightService.findById(id);
         model.addAttribute("newLight", light);
-        return "/light/newLight";
+        return "light/newLight";
     }
 
     @PostMapping("/{id}")
@@ -40,7 +40,7 @@ public class LightController {
                               @ModelAttribute("newLight") @Valid Light light,
                               BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "/light/newLight";
+            return "light/newLight";
         Scene scene = lightService.findById(id).getScene();
         light.setScene(scene);
         lightService.update(light);

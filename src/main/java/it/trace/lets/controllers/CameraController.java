@@ -32,7 +32,7 @@ public class CameraController {
                                Model model) {
         Camera  camera = cameraService.findById(id);
         model.addAttribute("newCamera", camera);
-        return "/camera/newCamera";
+        return "camera/newCamera";
     }
 
     @PostMapping("/{id}")
@@ -40,7 +40,7 @@ public class CameraController {
                                @Valid @ModelAttribute("newCamera") Camera camera,
                                BindingResult bindingResult) {
         if (bindingResult.hasErrors())
-            return "/camera/newCamera";
+            return "camera/newCamera";
         Scene scene = cameraService.findById(id).getScene();
         camera.setScene(scene);
         cameraService.update(camera);

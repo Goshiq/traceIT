@@ -58,12 +58,12 @@ public class FigureController {
         Figure  figure = figureService.findById(id);
         model.addAttribute("figure", figure);
         if (figure.getType() == FigureType.PLANE) {
-            return "/figure/newPlane";
+            return "figure/newPlane";
         }
         else if (figure.getType() == FigureType.SPHERE) {
-            return "/figure/newSphere";
+            return "figure/newSphere";
         }
-        return "/index";
+        return "index";
     }
 
     @PostMapping("figure/{id}")
@@ -79,7 +79,7 @@ public class FigureController {
             }
             else {
                 figureService.deleteFigure(id);
-                return "/index";
+                return "index";
             }
         }
         Scene scene = figureService.findById(id).getScene();
