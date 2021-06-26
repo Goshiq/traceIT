@@ -22,6 +22,9 @@ public class LightController {
     public String   deleteLight(@PathVariable("id") Long id,
                                 Model model) {
         Light light = lightService.findById(id);
+        if (light == null) {
+            return "error";
+        }
         Scene scene = light.getScene();
         lightService.deleteLight(id);
         return "redirect:/scene/" + scene.getId();
@@ -31,6 +34,9 @@ public class LightController {
     public String   editLight(@PathVariable("id") Long id,
                               Model model) {
         Light   light = lightService.findById(id);
+        if (light == null) {
+            return "error";
+        }
         model.addAttribute("newLight", light);
         return "light/newLight";
     }
@@ -41,7 +47,11 @@ public class LightController {
                               BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "light/newLight";
-        Scene scene = lightService.findById(id).getScene();
+        Light light1 = lightService.findById(id);
+        if (light == null) {
+            return "error";
+        }
+        Scene scene = light1.getScene();
         light.setScene(scene);
         lightService.update(light);
         return "redirect:/scene/" + scene.getId();

@@ -22,6 +22,9 @@ public class CameraController {
     public String   deleteFigure(@PathVariable("id") Long id,
                                  Model model) {
         Camera camera = cameraService.findById(id);
+        if (camera == null) {
+            return "error";
+        }
         Scene scene = camera.getScene();
         cameraService.deleteCamera(id);
         return "redirect:/scene/" + scene.getId();
@@ -31,6 +34,9 @@ public class CameraController {
     public String   editCamera(@PathVariable("id") Long id,
                                Model model) {
         Camera  camera = cameraService.findById(id);
+        if (camera == null) {
+            return "error";
+        }
         model.addAttribute("newCamera", camera);
         return "camera/newCamera";
     }
@@ -41,7 +47,11 @@ public class CameraController {
                                BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "camera/newCamera";
-        Scene scene = cameraService.findById(id).getScene();
+        Camera camera1 = cameraService.findById(id);
+        if (camera == null) {
+            return "error";
+        }
+        Scene scene = camera1.getScene();
         camera.setScene(scene);
         cameraService.update(camera);
         return "redirect:/scene/" + scene.getId();

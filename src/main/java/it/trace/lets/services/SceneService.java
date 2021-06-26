@@ -25,7 +25,7 @@ public class SceneService {
     }
 
     public Scene    getScene(Long id) {
-        return sceneRepository.getById(id);
+        return sceneRepository.findById(id).orElse(null);
     }
 
     public void     deleteScene(Long id) {
@@ -33,21 +33,30 @@ public class SceneService {
     }
 
     public List<Figure> getFigures(Long id) {
-        Scene   scene = sceneRepository.getById(id);
+        Scene   scene = sceneRepository.findById(id).orElse(null);
+        if (scene == null)
+            return null;
         return scene.getFigures();
     }
 
     public List<Camera> getCameras(Long id) {
-        Scene   scene = sceneRepository.getById(id);
+        Scene   scene = sceneRepository.findById(id).orElse(null);
+        if (scene == null)
+            return null;
         return scene.getCameras();
     }
 
     public List<Light>  getLights(Long id) {
-        Scene   scene = sceneRepository.getById(id);
+        Scene   scene = sceneRepository.findById(id).orElse(null);
+        if (scene == null)
+            return null;
         return scene.getLights();
     }
 
     public void clearFigures (Scene scene) {
+        if (scene == null) {
+            return;
+        }
         List<Figure>    figures = scene.getFigures();
         for (Figure fig:figures
              ) {
@@ -55,6 +64,5 @@ public class SceneService {
                 figureRepository.deleteById(fig.getId());
             }
         }
-//        sceneRepository.save(scene);
     }
 }

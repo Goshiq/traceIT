@@ -44,6 +44,9 @@ public class SceneController {
     @GetMapping("/{id}")
     public String   showScene(@PathVariable("id") Long id, Model model) {
         Scene   scene = sceneService.getScene(id);
+        if (scene == null) {
+            return "error";
+        }
         sceneService.clearFigures(scene);
         model.addAttribute("newScene", scene);
         model.addAttribute("newSceneId", scene.getId());
@@ -63,7 +66,11 @@ public class SceneController {
     @GetMapping("/{id}/addfigure")
     public String   addFigure(@PathVariable("id") Long sceneId, Model model) {
         Figure figure = new Figure();
-        figure.setScene(sceneService.getScene(sceneId));
+        Scene scene = sceneService.getScene(sceneId);
+        if (scene == null) {
+            return "error";
+        }
+        figure.setScene(scene);
         figureService.addFigure(figure);
         model.addAttribute("newFigureId", figure.getId());
         return "figure/newFigure";
@@ -72,7 +79,11 @@ public class SceneController {
     @GetMapping("/{id}/addcamera")
     public String   addCamera(@PathVariable("id") Long sceneId, Model model) {
         Camera camera = new Camera();
-        camera.setScene(sceneService.getScene(sceneId));
+        Scene scene = sceneService.getScene(sceneId);
+        if (scene == null) {
+            return "error";
+        }
+        camera.setScene(scene);
         cameraService.addCamera(camera);
         model.addAttribute("newCamera", camera);
         return "camera/newCamera";
@@ -81,7 +92,11 @@ public class SceneController {
     @GetMapping("/{id}/addlight")
     public String   addLight(@PathVariable("id") Long sceneId, Model model) {
         Light   light = new Light();
-        light.setScene(sceneService.getScene(sceneId));
+        Scene scene = sceneService.getScene(sceneId);
+        if (scene == null) {
+            return "error";
+        }
+        light.setScene(scene);
         lightService.addLight(light);
         model.addAttribute("newLight", light);
         return "light/newLight";
@@ -90,6 +105,9 @@ public class SceneController {
     @GetMapping("/{id}/print")
     public String   printScene(@PathVariable("id") Long sceneId, Model model) {
         Scene scene = sceneService.getScene(sceneId);
+        if (scene == null) {
+            return "error";
+        }
         model.addAttribute("scene", scene);
         return "scene/printScene";
     }

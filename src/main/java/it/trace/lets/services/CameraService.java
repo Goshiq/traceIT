@@ -13,7 +13,7 @@ public class CameraService {
     }
 
     public Camera   findById(Long id) {
-        return cameraRepository.getById(id);
+        return cameraRepository.findById(id).orElse(null);
     }
 
     public void addCamera(Camera camera) {

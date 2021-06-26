@@ -15,7 +15,7 @@ public class FigureService {
     }
 
     public Figure   findById(Long id) {
-        return figureRepository.getById(id);
+        return figureRepository.findById(id).orElse(null);
     }
 
     public void     addFigure(Figure figure) {
@@ -27,7 +27,10 @@ public class FigureService {
     }
 
     public void updateType(Long figId, FigureType type) {
-        Figure figure = figureRepository.getById(figId);
+        Figure figure = figureRepository.findById(figId).orElse(null);
+        if (figure == null) {
+            return;
+        }
         figure.setType(type);
         figureRepository.save(figure);
     }

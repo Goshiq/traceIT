@@ -17,7 +17,7 @@ public class LightService {
     }
 
     public Light    findById(Long id) {
-        return lightRepository.getById(id);
+        return lightRepository.findById(id).orElse(null);
     }
 
     public void deleteLight(Long id) {

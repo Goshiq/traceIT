@@ -29,7 +29,6 @@ public class FigureController {
         model.addAttribute("figure", figureService.findById(figId));
         model.addAttribute("figId", figId);
         return "figure/newSphere";
-//        return "redirect:" + figId;
     }
 
     @PostMapping("/addplane/{figId}")
@@ -38,6 +37,9 @@ public class FigureController {
             Model model) {
         figureService.updateType(figId, FigureType.PLANE);
         Figure figure = figureService.findById(figId);
+        if (figure == null) {
+            return "error";
+        }
         model.addAttribute("figure", figure);
         model.addAttribute("figId", figId);
         return "figure/newPlane";
@@ -47,6 +49,9 @@ public class FigureController {
     public String   deleteFigure(@PathVariable("id") Long id,
                                  Model model) {
         Figure  figure = figureService.findById(id);
+        if (figure == null) {
+            return "error";
+        }
         Scene scene = figure.getScene();
         figureService.deleteFigure(id);
         return "redirect:/scene/" + scene.getId();
@@ -56,6 +61,9 @@ public class FigureController {
     public String   editFigure(@PathVariable("id") Long id,
                                Model model) {
         Figure  figure = figureService.findById(id);
+        if (figure == null) {
+            return "error";
+        }
         model.addAttribute("figure", figure);
         if (figure.getType() == FigureType.PLANE) {
             return "figure/newPlane";
@@ -83,6 +91,9 @@ public class FigureController {
             }
         }
         Scene scene = figureService.findById(id).getScene();
+        if (scene == null) {
+            return "error";
+        }
         figure.setScene(scene);
         figureService.update(figure);
         return "redirect:/scene/" + scene.getId();
