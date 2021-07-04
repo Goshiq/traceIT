@@ -6,7 +6,7 @@ It is a web-tool to make a scene for 3D-engine: https://github.com/Goshiq/RT
 ## Starting
 - You can use docker to start the project
 ```C
-git clone git@github.com:Goshiq/traceIT.git && cd traceIT/Dockerize
+git clone https://github.com/Goshiq/traceIT.git && cd traceIT/Dockerize
 ```
 - Start the script
 ```C
