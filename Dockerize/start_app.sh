@@ -1,6 +1,6 @@
 #!/bin/sh
 
 docker pull postgres
-rm ./*.jar
+#rm ./*.jar
 cp ../target/lets*.jar ./
 docker-compose up
