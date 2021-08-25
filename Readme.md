@@ -2,6 +2,7 @@
 ### Still beta
 
 It is a web-tool to make a scene for 3D-engine: https://github.com/Goshiq/RT
+Set db-adress at the evironment variable POSTGRES_HOST
 
 ## Starting
 - You can use docker to start the project
